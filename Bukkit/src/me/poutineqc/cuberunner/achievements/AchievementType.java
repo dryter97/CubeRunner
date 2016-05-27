@@ -1,0 +1,14 @@
+package me.poutineqc.cuberunner.achievements;
+
+public enum AchievementType {
+	AMOUNT_GAMES,
+	AMOUNT_KILLS,
+	TOTAL_SCORE,
+	MULTIPLAYER_GAMES_WON,
+	SURVIVE_5_MINUTES,
+	FILL_THE_ARENA,
+	REACH_HEIGHT_10,
+	DISCONNECT_IN_STARTUP,
+	JUMP_50_TIMES,
+	DIE_SECONDS_42
+}
