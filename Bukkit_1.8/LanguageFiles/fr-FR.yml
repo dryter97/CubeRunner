@@ -84,10 +84,11 @@ guiStatsTotalPoints: "&bScore total"
 guiStatsKills: "&bJoueurs tués"
 guiStatsMultiplayer: "&bParties multijoueurs gagnées"
 guiStatsTimePlayed: "&dTemps joué"
+guiStatsMoney: "&dArgent gagné"
 guiChallengeName: "&bDéfis"
 guiColorName: "&4Couleurs"
 guiColorInfo: "&eLes blocs séléctionnés\n&esont ceux enchantés.\n&eCliquez sur un bloc\n&epour l'activer ou le désactiver."
-guiStatsMoney: "&dArgent gagné"
+guiColorEditWhileActive: "&cTu ne peux pas changer les couleur alors qu'il y a une partie en cours."
 
 # Key Words
 keyWordHelp: "Aide"

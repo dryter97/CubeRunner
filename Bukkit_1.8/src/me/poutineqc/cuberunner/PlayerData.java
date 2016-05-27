@@ -46,7 +46,12 @@ public class PlayerData implements Listener {
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
+		addOnFileIfNotExist(player);
+	}
+
+	public void addOnFileIfNotExist(Player player) {
 		String uuid = player.getUniqueId().toString();
+		
 		if (mysql.hasConnection()) {
 			ResultSet query = mysql.query("SELECT * FROM " + config.tablePrefix + "PLAYERS WHERE UUID='" + uuid + "';");
 			try {
@@ -85,7 +90,7 @@ public class PlayerData implements Listener {
 			}
 		}
 	}
-
+	
 	public FileConfiguration getData() {
 		return playerData;
 	}
