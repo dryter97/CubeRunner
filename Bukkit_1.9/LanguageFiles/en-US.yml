@@ -84,10 +84,11 @@ guiStatsTotalPoints: "&bTotal Score"
 guiStatsKills: "&bPlayers Killed"
 guiStatsMultiplayer: "&bMultiplayer games won"
 guiStatsTimePlayed: "&dTime Played"
+guiStatsMoney: "&dMoney Gained"
 guiChallengeName: "&bChallenges"
 guiColorName: "&4Color Picker"
 guiColorInfo: "&eThe enchanted blocks are\n&ethe curently selected ones.\n&eClick a block to\n&eenable or disable it."
-guiStatsMoney: "&dMoney Gained"
+guiColorEditWhileActive: "&cYou can't edit the colors while a game is active."
 
 # Key Words
 keyWordHelp: "Help"

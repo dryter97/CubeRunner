@@ -102,6 +102,7 @@ public class Language {
 	public String guiChallengeName;
 	public String guiColorName;
 	public String guiColorInfo;
+	public String guiColorEditWhileActive;
 
 	public String keyWordHelp;
 	public String keyWordCategory;
@@ -274,6 +275,7 @@ public class Language {
 		guiChallengeName = languageData.getString("guiChallengeName", "&bChallenges");
 		guiColorName = languageData.getString("guiColorName", "&4Color Picker");
 		guiColorInfo = languageData.getString("guiColorInfo", "&eThe enchanted blocks are\n&ethe curently selected ones.\n&eClick a block to\n&eenable or disable it.");
+		guiColorEditWhileActive = languageData.getString("guiColorEditWhileActive", "&cYou can't edit the colors while a game is active.");
 
 		commandDescriptions = new CaseInsensitiveMap();
 		for (CubeRunnerCommand cmd : CubeRunnerCommand.getCommands()) {

@@ -50,7 +50,13 @@ public class ColorGUI implements Listener {
 
 		Arena arena = Arena
 				.getArena(ChatColor.stripColor(event.getInventory().getItem(0).getItemMeta().getLore().get(0)));
-
+		
+		if (arena.getGameState() == GameState.ACTIVE || arena.getGameState() == GameState.ENDING) {
+			player.closeInventory();
+			local.sendMsg(player, local.guiColorEditWhileActive);
+			return;
+		}
+		
 		int valueOfItem = item.getDurability();
 		if (item.getType() == Material.STAINED_CLAY)
 			valueOfItem += 16;
@@ -62,6 +68,7 @@ public class ColorGUI implements Listener {
 			arena.getColorManager()
 					.setColorIndice(arena.getColorManager().getColorIndice() + (int) Math.pow(2, valueOfItem));
 
+		arena.resetArena(item);
 		openColorGUI(player, arena);
 	}
 

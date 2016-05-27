@@ -334,7 +334,12 @@ public class PlayerCommands implements CommandExecutor {
 		if (command.getCommandName().equalsIgnoreCase("setcolor")) {
 			if (!Permissions.hasPermission(command, player, true))
 				return true;
-				
+
+			if (arena.getGameState() == GameState.ACTIVE || arena.getGameState() == GameState.ENDING) {
+				local.sendMsg(player, local.guiColorEditWhileActive);
+				return true;
+			}
+			
 			colorGUI.openColorGUI(player, arena);
 			return true;
 		}

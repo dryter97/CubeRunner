@@ -17,6 +17,7 @@ import org.bukkit.block.Block;
 import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.util.Vector;
 
@@ -85,8 +86,6 @@ public class Arena {
 		Arena.achievements = plugin.getAchievements();
 		Arena.topManager = plugin.getTopManager();
 		Arena.economy = CubeRunner.getEconomy();
-
-		loadExistingArenas();
 	}
 
 	public static void loadExistingArenas() {
@@ -129,7 +128,7 @@ public class Arena {
 		} else {
 			if (!arenaData.getData().contains("arenas"))
 				return;
-				
+
 			for (String arenaName : arenaData.getData().getConfigurationSection("arenas").getKeys(false)) {
 				World world = Bukkit.getServer()
 						.getWorld(arenaData.getData().getString("arenas." + arenaName + ".world"));
@@ -482,6 +481,7 @@ public class Arena {
 
 	public void addPlayer(Player player, boolean teleport) {
 		Language local = playerData.getLanguageOfPlayer(player);
+		playerData.addOnFileIfNotExist(player);
 
 		if (getArenaFromPlayer(player) != null) {
 			local.sendMsg(player, local.playerAlreadyInGame);
@@ -687,6 +687,25 @@ public class Arena {
 								block.setType(Material.AIR);
 								continue nextBlock;
 							}
+
+				}
+	}
+
+	@SuppressWarnings("deprecation")
+	public void resetArena(ItemStack item) {
+		for (int x = minPoint.getBlockX(); x <= maxPoint.getBlockX(); x++)
+			for (int y = maxPoint.getBlockY(); y >= minPoint.getBlockY(); y--)
+				nextBlock: for (int z = minPoint.getBlockZ(); z <= maxPoint.getBlockZ(); z++) {
+					Location location = new Location(world, x, y, z);
+					Block block = location.getBlock();
+					if (block.getType() != Material.STAINED_CLAY && block.getType() != Material.WOOL)
+						continue;
+
+					if (item.getType() == block.getType())
+						if (item.getDurability() == block.getData()) {
+							block.setType(Material.AIR);
+							continue nextBlock;
+						}
 
 				}
 	}
