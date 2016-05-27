@@ -494,10 +494,12 @@ public class Arena {
 			return;
 		}
 
-		addUser(player, gameState == GameState.ACTIVE);
+		User user = addUser(player, gameState == GameState.ACTIVE);
 
-		if (teleport)
+		if (teleport) {
 			player.teleport(lobby);
+			user.maxStats();
+		}
 
 		if (gameState == GameState.ACTIVE) {
 			local.sendMsg(player, local.playerJoinActive);
@@ -508,8 +510,10 @@ public class Arena {
 			return;
 		}
 
-		if (gameState == GameState.STARTUP)
+		if (gameState == GameState.STARTUP) {
 			player.teleport(startPoint);
+			user.maxStats();
+		}
 
 		local.sendMsg(player, local.playerJoinSuccess.replace("%arena%", name));
 		for (User u : users) {
@@ -522,11 +526,12 @@ public class Arena {
 		}
 	}
 
-	private void addUser(Player player, boolean eliminated) {
+	private User addUser(Player player, boolean eliminated) {
 		User user = new User(config, player, gameState == GameState.ACTIVE);
 		users.add(user);
 		user.maxStats();
 		user.setEliminated(eliminated);
+		return user;
 	}
 
 	public void removePlayer(Player player, boolean disconnect) {
@@ -581,6 +586,7 @@ public class Arena {
 
 		for (User user : users) {
 			user.getPlayer().teleport(startPoint);
+			user.maxStats();
 		}
 
 		countdown(this, config.countdownTime * 20);
