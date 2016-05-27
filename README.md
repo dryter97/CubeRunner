@@ -23,5 +23,5 @@ Nitro117 ([Spigot](https://www.spigotmc.org/members/nitro117.130882/))
 
 **Language Translator**  
 
-*German*
+*German*  
 AkEgo ([Spigot](https://www.spigotmc.org/members/akego.101260/))
