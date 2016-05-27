@@ -1,11 +1,11 @@
 name: CubeRunner
 main : me.poutineqc.cuberunner.CubeRunner
-version: 2.1.4
+version: 2.2
 description: Blocks are falling over your head! Can you outrun them?
-load: startup
+load: postworld
 author: PoutineQc
 database: false
-prefix: [CubeRunner]
+prefix: CubeRunner
 
 commands:
   cuberunner:

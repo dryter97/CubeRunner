@@ -64,6 +64,18 @@ public class CubeRunner extends JavaPlugin {
 		enableListeners();
 		getCommand("cuberunner").setExecutor(playerCommands);
 
+		if (!playerData.isLatestVersion()) {
+			logger.info("----------------------------");
+			logger.info("CubeRunner Updater");
+			logger.info("");
+			logger.info("An update for CubeRunner has been found!");
+			logger.info("CubeRunner " + playerData.getLatestVersion());
+			logger.info("You are running " + pdfFile.getVersion());
+			logger.info("");
+			logger.info("Download at https://www.spigotmc.org/resources/cuberunner.19715/");
+			logger.info("----------------------------");
+		}
+
 		try {
 			Metrics metrics;
 			metrics = new Metrics(this);
@@ -71,13 +83,13 @@ public class CubeRunner extends JavaPlugin {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 			public void run() {
 				Arena.loadExistingArenas();
 			}
 		}, 1L);
-		
+
 		logger.info(pdfFile.getName() + " has been enabled (v" + pdfFile.getVersion() + ")");
 	}
 
@@ -185,16 +197,16 @@ public class CubeRunner extends JavaPlugin {
 	private void enableListeners() {
 		PluginManager pm = getServer().getPluginManager();
 
-		pm.registerEvents(new PlayerData(this), this);
+		pm.registerEvents(playerData, this);
 		pm.registerEvents(new PlayerDamage(this), this);
 		pm.registerEvents(new PlayerTeleport(this), this);
 		pm.registerEvents(new PlayerDisconnect(this), this);
 		pm.registerEvents(new SignPlace(this), this);
 		pm.registerEvents(new PlayerInteract(this), this);
 		pm.registerEvents(new PlayerMovement(this), this);
-		pm.registerEvents(new AchievementGUI(this), this);
-		pm.registerEvents(new JoinGUI(this), this);
-		pm.registerEvents(new ColorGUI(this), this);
+		pm.registerEvents(achievementsGui, this);
+		pm.registerEvents(joinGui, this);
+		pm.registerEvents(colorGUI, this);
 	}
 
 	public Configuration getConfiguration() {

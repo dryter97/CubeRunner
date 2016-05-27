@@ -1,7 +1,10 @@
 package me.poutineqc.cuberunner;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map.Entry;
@@ -15,6 +18,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import me.poutineqc.cuberunner.commands.CubeRunnerCommand;
+
 public class PlayerData implements Listener {
 
 	private Configuration config;
@@ -22,6 +27,8 @@ public class PlayerData implements Listener {
 
 	private File playerFile;
 	private FileConfiguration playerData;
+	private boolean lastVersion;
+	private String latestVersion;
 
 	public PlayerData(CubeRunner plugin) {
 		config = plugin.getConfiguration();
@@ -36,7 +43,34 @@ public class PlayerData implements Listener {
 			}
 		}
 
+		lastVersion = isLastVersion(plugin);
+
 		loadPlayerData();
+	}
+
+	private boolean isLastVersion(CubeRunner plugin) {
+		boolean next = false;
+		URL url;
+		try {
+			url = new URL("http://www.poutineqc.ca/pluginVersion.txt");
+			BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+
+			while ((latestVersion = in.readLine()) != null) {
+				if (next)
+					break;
+				if (latestVersion.equalsIgnoreCase("CubeRunner"))
+					next = true;
+			}
+			
+			in.close();
+		} catch (IOException e) {
+			plugin.getLogger().warning("Could not find the latest version available.");
+		}
+
+		if (next)
+			return latestVersion.equalsIgnoreCase(plugin.getDescription().getVersion());
+
+		return true;
 	}
 
 	public void loadPlayerData() {
@@ -47,11 +81,18 @@ public class PlayerData implements Listener {
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 		addOnFileIfNotExist(player);
+
+		if (!lastVersion && Permissions.hasPermission(CubeRunnerCommand.getCommand("reload"), player, false)) {
+			Language local = getLanguageOfPlayer(player);
+			local.sendMsg(player,
+					"&5A new CubeRunner version is available &d(v%version%)&5.\n".replace("%version%", latestVersion)
+							+ "&5Get it now : &dhttps://www.spigotmc.org/resources/cuberunner.19715/");
+		}
 	}
 
 	public void addOnFileIfNotExist(Player player) {
 		String uuid = player.getUniqueId().toString();
-		
+
 		if (mysql.hasConnection()) {
 			ResultSet query = mysql.query("SELECT * FROM " + config.tablePrefix + "PLAYERS WHERE UUID='" + uuid + "';");
 			try {
@@ -90,7 +131,7 @@ public class PlayerData implements Listener {
 			}
 		}
 	}
-	
+
 	public FileConfiguration getData() {
 		return playerData;
 	}
@@ -149,11 +190,19 @@ public class PlayerData implements Listener {
 
 	public void setLanguage(Player player, String key) {
 		if (mysql.hasConnection()) {
-			mysql.update("UPDATE " + config.tablePrefix + "PLAYERS SET language='" + key
-					+ "' WHERE UUID='" + player.getUniqueId().toString() + "';");
+			mysql.update("UPDATE " + config.tablePrefix + "PLAYERS SET language='" + key + "' WHERE UUID='"
+					+ player.getUniqueId().toString() + "';");
 		} else {
 			playerData.set("players." + player.getUniqueId().toString() + ".language", key);
 			savePlayerData();
 		}
+	}
+
+	public boolean isLatestVersion() {
+		return lastVersion;
+	}
+
+	public String getLatestVersion() {
+		return latestVersion;
 	}
 }
