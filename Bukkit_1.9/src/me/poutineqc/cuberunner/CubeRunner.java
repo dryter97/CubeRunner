@@ -1,5 +1,6 @@
 package me.poutineqc.cuberunner;
 
+import java.io.IOException;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
@@ -63,6 +64,14 @@ public class CubeRunner extends JavaPlugin {
 		enableListeners();
 		getCommand("cuberunner").setExecutor(playerCommands);
 
+		try {
+			Metrics metrics;
+			metrics = new Metrics(this);
+			metrics.start();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 			public void run() {
 				Arena.loadExistingArenas();
@@ -136,6 +145,7 @@ public class CubeRunner extends JavaPlugin {
 		new Language(this);
 		new Language("en-US", false);
 		new Language("fr-FR", false);
+		new Language("de-De", false);
 		new Language(config.language, false);
 	}
 
