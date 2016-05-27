@@ -15,7 +15,7 @@ import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
-import org.bukkit.entity.FallingBlock;
+import org.bukkit.entity.FallingSand;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
@@ -42,6 +42,7 @@ import net.minecraft.server.v1_8_R3.PacketPlayOutTitle;
 import net.minecraft.server.v1_8_R3.PacketPlayOutTitle.EnumTitleAction;
 import net.minecraft.server.v1_8_R3.PlayerConnection;
 
+@SuppressWarnings("deprecation")
 public class Arena {
 
 	private static CubeRunner plugin;
@@ -671,7 +672,6 @@ public class Arena {
 
 	}
 
-	@SuppressWarnings("deprecation")
 	private void resetArena() {
 		for (int x = minPoint.getBlockX(); x <= maxPoint.getBlockX(); x++)
 			for (int y = maxPoint.getBlockY(); y >= minPoint.getBlockY(); y--)
@@ -691,7 +691,6 @@ public class Arena {
 				}
 	}
 
-	@SuppressWarnings("deprecation")
 	public void resetArena(ItemStack item) {
 		for (int x = minPoint.getBlockX(); x <= maxPoint.getBlockX(); x++)
 			for (int y = maxPoint.getBlockY(); y >= minPoint.getBlockY(); y--)
@@ -774,11 +773,11 @@ public class Arena {
 
 					ItemStackManager fallingBlock = arena.colorManager.getRandomAvailableBlock();
 
-					@SuppressWarnings("deprecation")
-					FallingBlock clay = (FallingBlock) player.getWorld().spawnFallingBlock(l,
+					FallingSand clay = (FallingSand) player.getWorld().spawnFallingBlock(l,
 							fallingBlock.getMaterial(), (byte) fallingBlock.getData());
 
 					clay.setDropItem(false);
+					clay.setHurtEntities(true);
 					clay.setCustomName(user.getUUID());
 					clay.setCustomNameVisible(false);
 
