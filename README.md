@@ -1,0 +1,2 @@
+# CubeRunner
+Minecraft minigame plugin
