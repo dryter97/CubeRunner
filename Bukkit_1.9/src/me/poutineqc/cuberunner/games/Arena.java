@@ -779,8 +779,8 @@ public class Arena {
 
 					ItemStackManager fallingBlock = arena.colorManager.getRandomAvailableBlock();
 
-					FallingSand clay = (FallingSand) player.getWorld().spawnFallingBlock(l,
-							fallingBlock.getMaterial(), (byte) fallingBlock.getData());
+					FallingSand clay = (FallingSand) player.getWorld().spawnFallingBlock(l, fallingBlock.getMaterial(),
+							(byte) fallingBlock.getData());
 
 					clay.setDropItem(false);
 					clay.setHurtEntities(true);
@@ -954,11 +954,11 @@ public class Arena {
 
 			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
 				public void run() {
-					kickUsers();
+					kickUsers(false);
 				}
 			}, 100L);
 		} else
-			kickUsers();
+			kickUsers(true);
 
 	}
 
@@ -979,14 +979,19 @@ public class Arena {
 		return i;
 	}
 
-	private void kickUsers() {
+	private void kickUsers(boolean wait) {
 		for (User user : users) {
 			user.quit();
 			user.returnStats();
 		}
 
 		users.clear();
-		gameState = GameState.READY;
+
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
+			public void run() {
+				gameState = GameState.READY;
+			}
+		}, wait ? 5L : 0L);
 	}
 
 	public void removeUser(Player player) {

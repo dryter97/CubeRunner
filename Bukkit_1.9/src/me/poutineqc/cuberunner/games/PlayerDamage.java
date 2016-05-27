@@ -59,6 +59,9 @@ public class PlayerDamage implements Listener {
 			return;
 		}
 
+		event.setDamage(0);
+		arena.eliminateUser(arena.getUser(player), false);
+		
 		String dammagerUUID = event.getDamager().getCustomName();
 		if (!dammagerUUID.equalsIgnoreCase(player.getUniqueId().toString())) {
 			int kills = 0;
@@ -82,9 +85,6 @@ public class PlayerDamage implements Listener {
 			
 			achievements.checkAchievement(AchievementType.AMOUNT_KILLS, arena.getPlayerFromUUID(dammagerUUID));
 		}
-
-		event.setDamage(0);
-		arena.eliminateUser(arena.getUser(player), false);
 	}
 	
 	@EventHandler
