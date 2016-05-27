@@ -779,7 +779,6 @@ public class Arena {
 							fallingBlock.getMaterial(), (byte) fallingBlock.getData());
 
 					clay.setDropItem(false);
-					clay.setHurtEntities(true);
 					clay.setCustomName(user.getUUID());
 					clay.setCustomNameVisible(false);
 
