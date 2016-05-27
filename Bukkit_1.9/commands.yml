@@ -1,0 +1,69 @@
+commands:
+  general:
+    language:
+      usage: "/%command% language <language>"
+      description: "cmd-desc-language"
+      permission: "cuberunner.player.language"
+    stats:
+      usage: "/%command% stats"
+      description: "cmd-desc-stats"
+      permission: "cuberunner.player.stats"
+  game:
+    list:
+      usage: "/%command% list"
+      description: "cmd-desc-list"
+      permission: "cuberunner.player.list"
+    info:
+      usage: "/%command% info <arena>"
+      description: "cmd-desc-info"
+      permission: "cuberunner.player.info"
+    join:
+      usage: "/%command% join [arena]"
+      description: "cmd-desc-join"
+      permission: "cuberunner.player.play.join"
+    quit:
+      usage: "/%command% quit"
+      description: "cmd-desc-quit"
+      permission: "cuberunner.player.play.quit"
+    start:
+      usage: "/%command% start"
+      description: "cmd-desc-start"
+      permission: "cuberunner.player.play.start"
+  arena:
+    new:
+      usage: "/%command% new <arenaName>"
+      description: "cmd-desc-new"
+      permission: "cuberunner.admin.edit.new"
+    delete:
+      usage: "/%command% <arenaName> delete"
+      description: "cmd-desc-delete"
+      permission: "cuberunner.admin.edit.delete"
+    setzone:
+      usage: "/%command% <arenaName> setzone"
+      description: "cmd-desc-setzone"
+      permission: "cuberunner.admin.edit.zone"
+    setlobby:
+      usage: "/%command% <arenaName> setlobby"
+      description: "cmd-desc-setlobby"
+      permission: "cuberunner.admin.edit.lobby"
+    setstartpoint:
+      usage: "/%command% <arenaName> setstartpoint"
+      description: "cmd-desc-setstartpoint"
+      permission: "cuberunner.admin.edit.startpoint"
+    setminplayer:
+      usage: "/%command% <arenaName> setminplayer <amount>"
+      description: "cmd-desc-setminplayer"
+      permission: "cuberunner.admin.edit.amountplayer.minplayer"
+    setmaxplayer:
+      usage: "/%command% <arenaName> setmaxplayer <amount>"
+      description: "cmd-desc-setmaxplayer"
+      permission: "cuberunner.admin.edit.amountplayer.maxplayer"
+    setcolor:
+      usage: "/%command% <arenaName> setcolor"
+      description: "cmd-desc-setcolor"
+      permission: "cuberunner.admin.edit.color"
+  admin:
+    reload:
+      usage: "/%command% reload"
+      description: "cmd-desc-reload"
+      permission: "cuberunner.admin.reload"
