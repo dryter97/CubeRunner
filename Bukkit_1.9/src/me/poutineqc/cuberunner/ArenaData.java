@@ -22,6 +22,7 @@ public class ArenaData {
 				Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create arenaData.ylm.");
 			}
 		}
+		loadArenaData();
 	}
 	
 	public void loadArenaData() {
