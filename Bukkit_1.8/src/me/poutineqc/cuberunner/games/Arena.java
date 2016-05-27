@@ -127,6 +127,9 @@ public class Arena {
 			}
 
 		} else {
+			if (!arenaData.getData().contains("arenas"))
+				return;
+				
 			for (String arenaName : arenaData.getData().getConfigurationSection("arenas").getKeys(false)) {
 				World world = Bukkit.getServer()
 						.getWorld(arenaData.getData().getString("arenas." + arenaName + ".world"));

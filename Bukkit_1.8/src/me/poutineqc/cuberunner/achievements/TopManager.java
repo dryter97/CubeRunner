@@ -38,30 +38,32 @@ public class TopManager {
 		kills = updateTop("kills");
 		multiplayerWon = updateTop("multiplayerWon");
 	}
-	
+
 	private List<TopManager> updateTop(String lookup) {
 		List<TopManager> tempList = new ArrayList<TopManager>();
-		for (String uuid : playerData.getData().getConfigurationSection("players").getKeys(false)) {
-			String name = playerData.getData().getString("players." + uuid + ".name", "unknown");
-			double score = playerData.getData().getDouble("players." + uuid + "." + lookup, 0);
-			tempList.add(0, new TopManager(name, score));
-			
-			for (int i = 0; i < 10 && i < tempList.size() - 1; i++) {
-				if (tempList.get(i).score < tempList.get(i+1).score) {
-					TopManager tempValue = tempList.get(i);
-					tempList.set(i, tempList.get(i+1));
-					tempList.set(i+1, tempValue);
+		if (playerData.getData().contains("players")) {
+			for (String uuid : playerData.getData().getConfigurationSection("players").getKeys(false)) {
+				String name = playerData.getData().getString("players." + uuid + ".name", "unknown");
+				double score = playerData.getData().getDouble("players." + uuid + "." + lookup, 0);
+				tempList.add(0, new TopManager(name, score));
+
+				for (int i = 0; i < 10 && i < tempList.size() - 1; i++) {
+					if (tempList.get(i).score < tempList.get(i + 1).score) {
+						TopManager tempValue = tempList.get(i);
+						tempList.set(i, tempList.get(i + 1));
+						tempList.set(i + 1, tempValue);
+					}
 				}
 			}
 		}
 
 		return tempList;
 	}
-	
+
 	protected String getPlayer() {
 		return player;
 	}
-	
+
 	protected double getScore() {
 		return score;
 	}
