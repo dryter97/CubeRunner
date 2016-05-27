@@ -1,6 +1,6 @@
 name: CubeRunner
 main : me.poutineqc.cuberunner.CubeRunner
-version: 1.0
+version: 2.0.1
 description: A little minigame to avoid falling blocks
 load: postworld
 author: PoutineQc

@@ -334,7 +334,7 @@ public class PlayerCommands implements CommandExecutor {
 		if (command.getCommandName().equalsIgnoreCase("setcolor")) {
 			if (!Permissions.hasPermission(command, player, true))
 				return true;
-
+				
 			colorGUI.openColorGUI(player, arena);
 			return true;
 		}
