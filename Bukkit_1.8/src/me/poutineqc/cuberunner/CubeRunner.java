@@ -2,6 +2,7 @@ package me.poutineqc.cuberunner;
 
 import java.util.logging.Logger;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -35,7 +36,7 @@ public class CubeRunner extends JavaPlugin {
 	private JoinGUI joinGui;
 	private ColorGUI colorGUI;
 	private PlayerCommands playerCommands;
-	
+
 	private static Economy economy;
 
 	public void onEnable() {
@@ -62,6 +63,12 @@ public class CubeRunner extends JavaPlugin {
 		enableListeners();
 		getCommand("cuberunner").setExecutor(playerCommands);
 
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+			public void run() {
+				arenaData.loadArenaData();
+			}
+		}, 1L);
+		
 		logger.info(pdfFile.getName() + " has been enabled (v" + pdfFile.getVersion() + ")");
 	}
 
@@ -211,7 +218,7 @@ public class CubeRunner extends JavaPlugin {
 	public Achievements getAchievements() {
 		return achievements;
 	}
-	
+
 	public TopManager getTopManager() {
 		return topManager;
 	}

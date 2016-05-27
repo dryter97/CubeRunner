@@ -41,7 +41,6 @@ public class TopManager {
 
 	private List<TopManager> updateTop(String lookup) {
 		List<TopManager> tempList = new ArrayList<TopManager>();
-
 		if (playerData.getData().contains("players")) {
 			for (String uuid : playerData.getData().getConfigurationSection("players").getKeys(false)) {
 				String name = playerData.getData().getString("players." + uuid + ".name", "unknown");
