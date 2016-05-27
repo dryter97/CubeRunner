@@ -65,7 +65,7 @@ public class CubeRunner extends JavaPlugin {
 
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 			public void run() {
-				arenaData.loadArenaData();
+				Arena.loadExistingArenas();
 			}
 		}, 1L);
 		

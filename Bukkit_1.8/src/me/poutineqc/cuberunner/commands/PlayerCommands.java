@@ -70,7 +70,7 @@ public class PlayerCommands implements CommandExecutor {
 		}
 
 		if (args[0].equalsIgnoreCase("help")) {
-			String header = "&8&m" + StringUtils.repeat(" ", 30) + "&r &5CubeRunner &d" + local.keyWordHelp + " &8&m"
+			String header = "&8&m" + StringUtils.repeat(" ", 30) + "&r &6CubeRunner &e" + local.keyWordHelp + " &8&m"
 					+ StringUtils.repeat(" ", 30);
 
 			if (args.length == 1) {
@@ -92,18 +92,18 @@ public class PlayerCommands implements CommandExecutor {
 			int pageNumber = 1;
 			CommandType commandType;
 			List<CubeRunnerCommand> requestedCommands;
-			
+
 			try {
 				pageNumber = Integer.parseInt(args[1]);
 				if (pageNumber < 1)
 					pageNumber = 1;
-				
+
 				commandType = CommandType.ALL;
-				
+
 				requestedCommands = CubeRunnerCommand.getRequiredCommands(player, commandType);
 				if (pageNumber > Math.ceil((double) requestedCommands.size() / 3))
 					pageNumber = (int) Math.ceil((double) requestedCommands.size() / 3);
-				
+
 			} catch (NumberFormatException e) {
 				switch (args[1].toLowerCase()) {
 				case "game":
@@ -121,7 +121,7 @@ public class PlayerCommands implements CommandExecutor {
 				default:
 					commandType = CommandType.ALL;
 				}
-				
+
 				requestedCommands = CubeRunnerCommand.getRequiredCommands(player, commandType);
 
 				if (args.length > 2) {
@@ -137,7 +137,7 @@ public class PlayerCommands implements CommandExecutor {
 					}
 				}
 			}
-			
+
 			if (requestedCommands.size() == 0)
 				pageNumber = 0;
 
@@ -151,7 +151,7 @@ public class PlayerCommands implements CommandExecutor {
 				local.sendMsg(player, local.helpNoPermission);
 				return true;
 			}
-			
+
 			for (int i = 3 * (pageNumber - 1); i < requestedCommands.size() && i < (3 * (pageNumber - 1)) + 3; i++) {
 				player.sendMessage(ChatColor.translateAlternateColorCodes('&',
 						"&5" + requestedCommands.get(i).getUsage().replace("%command%", cmdValue)));
@@ -339,7 +339,7 @@ public class PlayerCommands implements CommandExecutor {
 				local.sendMsg(player, local.guiColorEditWhileActive);
 				return true;
 			}
-			
+
 			colorGUI.openColorGUI(player, arena);
 			return true;
 		}
@@ -357,8 +357,8 @@ public class PlayerCommands implements CommandExecutor {
 			try {
 				amount = Integer.parseInt(args[2]);
 			} catch (NumberFormatException e) {
-				local.sendMsg(player, local.arenaAmountPlayerInvalidArgument.replace("%error%",
-						local.arenaAmountPlayerNotANumber));
+				local.sendMsg(player,
+						local.arenaAmountPlayerInvalidArgument.replace("%error%", local.arenaAmountPlayerNotANumber));
 				return true;
 			}
 
@@ -378,8 +378,8 @@ public class PlayerCommands implements CommandExecutor {
 			try {
 				amount = Integer.parseInt(args[2]);
 			} catch (NumberFormatException e) {
-				local.sendMsg(player, local.arenaAmountPlayerInvalidArgument.replace("%error%",
-						local.arenaAmountPlayerNotANumber));
+				local.sendMsg(player,
+						local.arenaAmountPlayerInvalidArgument.replace("%error%", local.arenaAmountPlayerNotANumber));
 				return true;
 			}
 
