@@ -1,0 +1,40 @@
+# File to edit the achievements
+# Maximum of 7 achievements per categories
+# Minimum of 0 if you want to disable them
+# Don't worry about this file if you have set
+# the economy rewards to false in the config.
+
+# How to use:
+# - amount_to_achieve;reward amount
+
+amountOfGamesPlayed:
+  - 10;10.0
+  - 50;50.0
+  - 150;200.0
+  - 500;1000.0
+  
+totalScore:
+  - 100;5.0
+  - 1000;40.0
+  - 3600;100.0
+  - 15000;750.0
+  
+amountPlayerKills:
+  - 1;5.0
+  - 5;10.0
+  - 20;50.0
+  - 100;200.0
+
+multiplayerGamesWon:
+  - 2;5.0
+  - 20;40.0
+  - 75;100.0
+  - 250;300.0
+
+# Challenge Rewards
+rewardSurvive5Minutes: 25.0
+rewardFillTheArenasFloor: 50.0
+rewardReachHeight10: 100.0
+rewardTheRageQuit: 15.0
+rewardTheKillerBunny: 15.0
+rewardTheAnswerToLife: 15.0

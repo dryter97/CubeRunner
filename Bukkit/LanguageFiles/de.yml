@@ -1,0 +1,192 @@
+# CubeRunner plugin
+# Made by EgoLeX
+# de.yml - Language file
+
+languageName: "Deutsche"
+
+prefixShort: "&7[&5CR&7]"
+prefixLong: "&7[&5CubeRunner&7]"
+
+developper: "&5Erstellt durch: &7%developper%"
+version: "&5Version: &7%version%"
+description: "&dTippe &5/%command% help &d für eine Liste aller Kommandos."
+
+errorPermission: "&4Du hast die nicht die benötigten Rechte um dies zu tun"
+###UNTRANSLATED###
+errorCommand: "&cCommand not found.  Type &8/%cmd% help &cfor help."
+errorTeleport: "&cDu kannst dich nicht teleportieren während du dich im Spiel befindest. Tippe &7/cr quit &cum zu verlassen."
+###UNTRANSLATED###
+errorMissingArena: "&cYou need to specify a valid arena."
+errorAlreadyInGame: "&cDu bist bereits in einem CubeRunner Spiel."
+errorNotInGame: "&cDu befindest dich derzeit in keinem CubeRunner Spiel."
+
+infoTip: "&8[&7Tipp&8] &7Du kannst auch &8/%cmd% list &7und rechtsklick machen um Informationen zu bekommen."
+
+joinUnready: "&cDie Arena der du Beitreten wolltest exestiert anscheinend nicht"
+joinActive: "&cEs läuft derzeit ein Spiel in der Arena der du Beitreten wolltest."
+joinSpectator: "&dJoining als Zuschauer..."
+joinPlayer: "&aDu bist erfolgreich der Arena &2%arena%&a beigetreten."
+joinOthers: "&f%player% &dist der CubeRunners Arena beigetreten."
+joinGuiTitle: "&2Arena Liste"
+joinGuiInfo: "&eKlicke auf den Namen der Arena zu der du möchtest."
+joinGuiTipStarted: "&cAktiv : &eKlicke zum Zuschauen"
+joinGuiTipJoin: "&aBereit : &eKlicke zum Beitreten"
+
+quitPlayer: "&aDu hast die CubeRunners Arena &2%arena%&a verlassen."
+quitOthers: "&f%player% &dhat die CubeRunners Arena verlassen."
+
+startNotReady: "&cDas Spiel ist derzeit nicht bereit zum Starten"
+startMinimum: "&cEs müssen mindestens %amount% Spieler in der Arena sein um das Spiel zu starten."
+startMaximum: "&cEs dürfen maximal %amount% Spieler in der Arena sein um das Spiel zu starten."
+startBroadcast: "&dEin neues Spiel von &5CubeRunner &dwurde gefunden. Du kannst beitreten indem du folgendes Kommando verwendest: &5/cr join %arena%&d."
+startStop: "&cDer Countdown wurde gestoppt. Nicht genügend Spieler."
+
+endCrushPlayer: "&dDu bist mit einem Score von &5%score%&d rausgeflogen. Spiel Vorbei!"
+endCrushOthers: "&f%player% &dist mit einem Score von &5%score%&d rausgeflogen."
+###UNTRANSLATED###
+endHidePlayer: "&dYou have been kicked out of the game for hiding under a block."
+###UNTRANSLATED###
+endHideOthers: "&f%player% &dhave been kicked out of the game for hiding under a block."
+endTeleport: "&dSpiel Vorbei. Teleport zurück in 5 Sekunden..."
+endBest: "&6Glückwunsch an &f%player% &6welcher den neuen Highscore von &4%score% &6in der Arena &5%arena% hält."
+endReward: "&dDu hast %amount%%currency% für das Überleben von %amount2% Sekunden bekommen."
+###UNTRANSLATED###
+endBroadcastMultiplayer: "&6Congradulation to &f%player% &6who won a multiplayer game of CubeRunner in the arena &5%arena% &6with a score of &4%score%&6!"
+###UNTRANSLATED###
+endBroadcastSingleplayer: "&f%player% &6finished a game of CubeRunner in the arena &5%arena% &6with a score of &4%score%&6!"
+
+statsGuiTitle: "&6Stats"
+statsInfoAverageScore: "&bEigener Score pro Arena"
+statsInfoDistanceRan: "&bTotale Distanz"
+statsInfoGames: "&bgespielte Spiele"
+statsInfoTotalScore: "&bTotal Score"
+statsInfoKills: "&bgetötete Spieler"
+statsInfoMultiplayerWon: "&bMultiplayer Spiele gewonnen"
+statsInfoTimePlayed: "&dSpielzeit"
+statsInfoMoney: "&dGeldgewinn"
+statsChallengesTitle: "&bHerausforderungen"
+
+achievementBroadcast: "&f%player% &6hat die Errungenschaft &d%achievementName%&6 erhalten!"
+achievementReward: "&dDu hast %amount%%currency% für die Errungenschaft bekommen."
+achievementAmountGame: "&dSpiele %amount% Spiele"
+achievementTotalScore: "&dTotaler Score von %amount% erreichen"
+achievementKills: "&dTöte %amount% Spieler"
+achievementMultiplayerWon: "&dWin %amount% multiplayer game(s)"
+achievementSurvive5Minutes: "&dÜberlebe 5 Minuten"
+achievementReachHeight10: "&dErreiche eine Höhe von 10"
+achievementFillTheArena: "&dFülle den Arenaboden"
+achievementAnswerToLife: "&dDie Antwort für das Leben, das Universum und alles andere"
+achievementRageQuit: "&dDer Rage Quit"
+achievementKillerBunny: "&dDer Todeshase"
+
+editCreateNoname: "&cDu musst einen Namen für deine Arena wählen."
+editNewSuccess: "&aEine Arena namens &2%arena% &awurde erfolgreich erstellt."
+editNewExists: "&cEine Arena namens &4%arena% &cexistiert bereits."
+###UNTRANSLATED###
+editNewLongName: "&cThe arena's name can't be more than 12 letters long."
+editErrorArena: "&cEine Arena namens &4%arena% &cexistiert nicht."
+editRegionWorldedit: "&cDu musst erst eine WorldEdit Region festlegen."
+editRegion: "&aZone erfolgreich gesetzt für &2%arena%&a."
+editStartPoint: "&aStartpunkt erfolgreich gesetzt für &2%arena%&a."
+editLobby: "&aLobby erfolgreich gesetzt für &2%arena%&a."
+editPlayersMissing: "&cDu musst eine Menge angeben um die Spieleranzahl zu ändern."
+editPlayersError: "&cDie Anzahl der Spieler die du angeben hast ist unbekannt. &7[&8%error%&7]"
+editPlayersNaN: "Keine gültige Nummer"
+editPlayersMinimum1: "Minimum weniger als 1"
+editPlayersMinimumMaximum: "Minimum größer als Maximum"
+editPlayersMaximumMinimum: "Maximum kleiner als Minimum"
+editPlayersMaximum10 : "Maximum größer als 10"
+editPlayers: "&aAnzahl an Spielern erfolgreich editiert für &2%arena%&a."
+editColorGuiTitle: "&4Farbtool"
+editColorGuiInfo: "&eDie ausgewählten Blöcke sind\n&edie derzeit ausgewählten.\n&eKlicke auf einen Block\n&eum In zu De/-Aktivieren."
+editColorError: "&cDu kannst die Farben nicht ändern während du Ingame bist."
+editDelete: "&cArena entfernt."
+
+languageList: "Verfügbare Sprachen"
+languageNotFound: "&cSprache nicht gefunden. &8/%cmd% language &cfür eine Liste aller verfügbaren Sprachen"
+languageChanged: "&aSprache erfolgreich auf Englisch gesetzt"
+
+helpErrorPermission: "&cDu hast keinerlei Rechte für die Kategorie."
+helpDescriptionAll: "&7Alle Kommandos"
+helpDescriptionGeneral: "&7Generelle Spieler Kommandos"
+helpDescriptionGame: "&7Kommandos für das einfach Spiel"
+helpDescriptionArena: "&7Kommandos um die Arena zu erstellen"
+helpDescriptionAdmin: "&7Admin Kommandos"
+
+signPerm0: "&cDu hast nicht"
+signPerm1: "&cdie benötigten Rechte"
+signPerm2: "&cum ein DaC"
+signPerm3: "&cSchild zu erstellen"
+signValid1: "&cNone valid"
+signValid2: "&cSchild Parameter"
+signValid3: "&cVersuch es erneut"
+
+keyWordSignJoin: "&aBeitreten"
+keyWordSignQuit: "&cVerlassen"
+keyWordSignStart: "&9Spiel starten"
+keyWordSignStats: "&6Statistiken"
+keyWordSignPlay: "&aSpielen"
+###UNTRANSLATED###
+keyWordSignTop: "&bBest Score"
+
+keyWordGuiInstructions: "&6Einleitung"
+###UNTRANSLATED###
+keyWordGuiPage: "&ePage %number%"
+
+keyWordGameStateUnset: "&7Arena Unset"
+keyWordGameStatReady: "&aBereit"
+keyWordGameStatStartup: "&9Anfang"
+keyWordGameStatActive: "&cAktiv"
+
+keyWordGeneralHours: "Stunde"
+keyWordGeneralMinutes: "Minute"
+keyWordGeneralSeconds: "Sekunde"
+keyWordGeneralDistance: "km"
+keyWordGeneralBy: "von"
+
+keyWordHelp: "Hilfe"
+keyWordHelpCategory: "Kategorie"
+keyWordHelpPage: "Seite"
+
+keyWordInfo: "Information"
+keyWordInfoAdvanced: "Erweiterte Information"
+keyWordInfoMinimum: "Minimum"
+keyWordInfoMaximum: "Maximum"
+keyWordInfoCurrent: "Derzeitig"
+keyWordInfoAmountPlayer: "Spieleranzahl"
+keyWordInfoGameState: "Spielstatus"
+keyWordInfoWorld: "Welt"
+keyWordInfoLobby: "Lobby"
+keyWordInfoStartPoint: "Startpunkt"
+keyWordInfoZoneMinPoint: " Zonen Koordinaten"
+keyWordInfoBestScore: "Bester Score"
+
+keyWordStatsTop10: "Top 10"
+keyWordStatsProgression: "Entwicklung"
+keyWordStatsCompleted: "Beendet"
+keyWordStatsNotCompleted: "nicht beendet"
+keyWordStatsReward: "Belohnung"
+
+keyWordScoreboardPlayers: "Spieler"
+keyWordScoreboardScore: "Punkte"
+
+adminReload: "&aPlugin CubeRunner wurde erfolgreich reloaded."
+
+###UNTRANSLATED###
+cmdDescriptionHelp: "&7You already know how to do that don't you? ;)"
+cmdDescriptionLanguage: "&7Änder deine eigene Sprache für das CubeRunners plugin."
+cmdDescriptionStats: "&7Öffnet deine CubeRunners Statistik."
+cmdDescriptionList: "&7Öffnet eine Liste aller Kommandos."
+cmdDescriptionInfo: "&7Zeigt jede Information über eine Arena."
+cmdDescriptionJoin: "&7Betrete ein spezifisches Spiel oder öffne die GUI."
+cmdDescriptionQuit: "&7Verlasse dein derzeitiges Spiel."
+cmdDescriptionStart: "&7Startcountdown eingeleitet."
+cmdDescriptionNew: "&7Erstellt eine neue CubeRunners Arena."
+cmdDescriptionDelete: "&7Lösche eine spezifische Arena."
+cmdDescriptionSetzone: "&7Setze die Abgrenzung für eine spezifische Arena mit einer Worldedit Region."
+cmdDescriptionSetlobby: "&7Setz die Lobby der spezifischen Arena."
+cmdDescriptionStartpoint: "&7Setze den Startpunkt der Arena."
+cmdDescriptionSetcolor: "&7Setz die Blockfarbe der Arena"
+cmdDescriptionSetminplayer: "&7Setze die Minimale Spieleranzahl der Arena."
+cmdDescriptionSetmaxplayer: "&7Setze die Maximale Spieleranzahl der Arena."
+cmdDescriptionReload: "&7Reloade die config, die Spieler Daten und die Sprachdatei."

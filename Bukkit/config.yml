@@ -1,0 +1,114 @@
+############################################################
+# +------------------------------------------------------+ #
+# |                       Notes                          | #
+# +------------------------------------------------------+ #
+############################################################
+
+# CubeRunner plugin
+# Made by PoutineQc
+# config.yml - Config File
+
+# If you want to edit the challenges' rewards
+# Go in the achievements.yml file in the plugin/CubeRunner folder
+
+############################################################
+# +------------------------------------------------------+ #
+# |         CubeRunner general configuration             | #
+# +------------------------------------------------------+ #
+############################################################
+
+# Currently available languages:
+# "fr" - Francais
+# "en" - English
+# "de" - Deutsch
+# You may make another YAML file with another language
+# Simply put it in the LanguageFiles folder and write it's name here (without the ".yml")
+# This will option will be the "CR server language".. The signs will be in this language.
+# Warning: If you change this, a simple /dac reload won't do, you'll have to restart the server.
+language: 'en'
+
+# Set to true if you have a MySQL database and fill the information below
+# Warning: If you change this, a simple /dac reload won't do, you'll have to restart the server.
+mysql: false
+host: 127.0.0.1
+port: 3306
+user: ''
+password: ''
+database: 'minecraft'
+tablePrefix: 'cuberunner_'
+
+# If you want the Plugin's "logo" ([cr] if not changed) to be displayed in front of every messages
+prefixInFrontOfEveryMessages: true
+
+# True : The game starts automaticly as soon as there are enough players in the lobby
+# False : Players have to manually start the game
+autostart: true
+
+# The countdown from the moment a players starts the game to the beginning of the block shower. (in seconds)
+# Players may still join the game during this countdown
+countdownTime: 15
+
+# Set to true if you want player's inventories to be cleared during a game and returned after it.
+# Note : If the server crash of the plugin throws an error (which should not happend) during a game,
+#   the player will permenantly loose it's inventory
+saveAndClearInventory: true
+
+# Set to true if you want players to get back to their original location after the end of the game
+teleportAfterEnding: true
+
+# Broadcasts
+# True to enable - False to disable
+broadcasts:
+  startup: true
+  achievement: true
+  ending:
+    singleplayer: true
+    multiplayer: true
+
+
+############################################################
+# +------------------------------------------------------+ #
+# |           Rewards and end game commands              | #
+# +------------------------------------------------------+ #
+############################################################
+
+# Economy Rewards
+# Requires Vault and an economy plugin
+economyRewards: false
+
+# Reward at the end of the game
+# The reward will be the amount selected below times the score of the player
+# Choose the reward amounts depending on the values of your server's economy
+pricePerScore: 0.05
+
+# if true, when completing a challenge gives a money reward
+# will be false in all cases if you disable the economy rewards
+achievementsRewards: true
+
+# Commands that the console will execute at the end of the game
+# (Examples below)
+# +-----------------------------------------------------------------------------------------------------+
+# | Key Words | Commands with this node are executed :                                                  |
+# |-----------------------------------------------------------------------------------------------------|
+# | %winner%  | when the last player from a multiplayer game is eliminated where %winner% is the winner |
+# | %player%  | whenever a player is eliminated where %player% is the eliminated player                 |
+# | (nothing) | at the end of a game                                                                    |
+# |-----------------------------------------------------------------------------------------------------|
+# | %all%     | Everybody playing and watching                                                          |
+# | %arena%   | Name of the arena the game is being played in                                           |
+# | %prefix%  | CubeRunner's prefix as in all CubeRunner's messages                                     |
+# +-----------------------------------------------------------------------------------------------------+
+commands:
+#  - minecraft:playsound minecraft:entity.zombie.death hostile %player%
+#  - minecraft:give %winner% minecraft:apple 10
+#  - send %all% hub
+#  - minecraft:tell @a %prefix% The CubeRunner's arena %arena% is now ready for a new game
+#  - minecraft:weather clear
+
+############################################################
+# +------------------------------------------------------+ #
+# |                      Updates                         | #
+# +------------------------------------------------------+ #
+############################################################
+
+checkForUpdates: true
