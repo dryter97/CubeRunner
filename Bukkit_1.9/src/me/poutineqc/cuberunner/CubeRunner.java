@@ -41,7 +41,7 @@ public class CubeRunner extends JavaPlugin {
 	private static Economy economy;
 
 	public void onEnable() {
-		PluginDescriptionFile pdfFile = getDescription();
+		final PluginDescriptionFile pdfFile = getDescription();
 		final Logger logger = getLogger();
 
 		config = new Configuration(this);
@@ -64,18 +64,6 @@ public class CubeRunner extends JavaPlugin {
 		enableListeners();
 		getCommand("cuberunner").setExecutor(playerCommands);
 
-		if (!playerData.isLatestVersion()) {
-			logger.info("----------------------------");
-			logger.info("CubeRunner Updater");
-			logger.info("");
-			logger.info("An update for CubeRunner has been found!");
-			logger.info("CubeRunner " + playerData.getLatestVersion());
-			logger.info("You are running " + pdfFile.getVersion());
-			logger.info("");
-			logger.info("Download at https://www.spigotmc.org/resources/cuberunner.19715/");
-			logger.info("----------------------------");
-		}
-
 		try {
 			Metrics metrics;
 			metrics = new Metrics(this);
@@ -86,6 +74,17 @@ public class CubeRunner extends JavaPlugin {
 
 		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 			public void run() {
+				if (!playerData.isLatestVersion()) {
+					logger.info("----------------------------");
+					logger.info("CubeRunner Updater");
+					logger.info("");
+					logger.info("An update for CubeRunner has been found!");
+					logger.info("CubeRunner " + playerData.getLatestVersion());
+					logger.info("You are running " + pdfFile.getVersion());
+					logger.info("");
+					logger.info("Download at https://www.spigotmc.org/resources/cuberunner.19715/");
+					logger.info("----------------------------");
+				}
 				Arena.loadExistingArenas();
 			}
 		}, 1L);
@@ -166,7 +165,7 @@ public class CubeRunner extends JavaPlugin {
 			if (!setupEconomy()) {
 				getLogger().warning("Vault not found.");
 				getLogger().warning("Add Vault to your plugins or disable monetary rewards in the config.");
-				getLogger().info("Disabling DeACoudre...");
+				getLogger().info("Disabling CubeRunner...");
 				getServer().getPluginManager().disablePlugin(this);
 				return false;
 			}
