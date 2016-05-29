@@ -85,7 +85,8 @@ public class Arena {
 
 		if (mysql.hasConnection()) {
 			try {
-				ResultSet arenas = mysql.query("SELECT * FROM " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS;");
+				ResultSet arenas = mysql
+						.query("SELECT * FROM " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS;");
 				while (arenas.next()) {
 					String name = arenas.getString("name");
 					Long colorIndice = arenas.getLong("colorIndice");
@@ -211,10 +212,10 @@ public class Arena {
 		resetScoreboard();
 
 		if (mysql.hasConnection()) {
-			mysql.update("INSERT INTO " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS (name, world) " + "VALUES ('" + name + "','"
-					+ world.getName() + "');");
-			mysql.update("UPDATE " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS SET colorIndice=" + (long) 1 + " WHERE name='" + name
-					+ "';");
+			mysql.update("INSERT INTO " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS (name, world) "
+					+ "VALUES ('" + name + "','" + world.getName() + "');");
+			mysql.update("UPDATE " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS SET colorIndice="
+					+ (long) 1 + " WHERE name='" + name + "';");
 		} else {
 			arenaData.getData().set("arenas." + name + ".world", world.getName());
 			arenaData.getData().set("arenas." + name + ".colorIndice", (long) 1);
@@ -245,7 +246,8 @@ public class Arena {
 		arenas.remove(this);
 
 		if (mysql.hasConnection()) {
-			mysql.update("DELETE FROM " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS WHERE name='" + name + "';");
+			mysql.update("DELETE FROM " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS WHERE name='" + name
+					+ "';");
 		} else {
 			arenaData.getData().set("arenas." + name, null);
 			arenaData.saveArenaData();
@@ -272,10 +274,10 @@ public class Arena {
 		local.sendMsg(player, local.get(Messages.EDIT_REGION).replace("%arena%", name));
 
 		if (mysql.hasConnection()) {
-			mysql.update("UPDATE " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS SET world='" + world.getName() + "',minPointX="
-					+ minPoint.getBlockX() + ",minPointY=" + minPoint.getBlockY() + ",minPointZ=" + minPoint.getBlockZ()
-					+ ",maxPointX=" + maxPoint.getBlockX() + ",maxPointY=" + maxPoint.getBlockY() + ",maxPointZ="
-					+ maxPoint.getBlockZ() + " WHERE name='" + name + "';");
+			mysql.update("UPDATE " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS SET world='"
+					+ world.getName() + "',minPointX=" + minPoint.getBlockX() + ",minPointY=" + minPoint.getBlockY()
+					+ ",minPointZ=" + minPoint.getBlockZ() + ",maxPointX=" + maxPoint.getBlockX() + ",maxPointY="
+					+ maxPoint.getBlockY() + ",maxPointZ=" + maxPoint.getBlockZ() + " WHERE name='" + name + "';");
 		} else {
 			arenaData.getData().set("arenas." + name + ".world", world.getName());
 			arenaData.getData().set("arenas." + name + ".minPoint.X", minPoint.getBlockX());
@@ -301,9 +303,10 @@ public class Arena {
 		local.sendMsg(player, local.get(Messages.EDIT_LOBBY).replace("%arena%", name));
 
 		if (mysql.hasConnection()) {
-			mysql.update("UPDATE " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS SET world='" + world.getName() + "',lobbyX="
-					+ lobby.getX() + ",lobbyY=" + lobby.getY() + ",lobbyZ=" + lobby.getZ() + ",lobbyPitch="
-					+ lobby.getPitch() + ",lobbyYaw=" + lobby.getYaw() + " WHERE name='" + name + "';");
+			mysql.update("UPDATE " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS SET world='"
+					+ world.getName() + "',lobbyX=" + lobby.getX() + ",lobbyY=" + lobby.getY() + ",lobbyZ="
+					+ lobby.getZ() + ",lobbyPitch=" + lobby.getPitch() + ",lobbyYaw=" + lobby.getYaw() + " WHERE name='"
+					+ name + "';");
 		} else {
 			arenaData.getData().set("arenas." + name + ".world", world.getName());
 			arenaData.getData().set("arenas." + name + ".lobby.X", lobby.getX());
@@ -328,10 +331,10 @@ public class Arena {
 		local.sendMsg(player, local.get(Messages.EDIT_STARTPOINT).replace("%arena%", name));
 
 		if (mysql.hasConnection()) {
-			mysql.update("UPDATE " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS SET world='" + world.getName() + "',startPointX="
-					+ startPoint.getX() + ",startPointY=" + startPoint.getY() + ",startPointZ=" + startPoint.getZ()
-					+ ",startPointPitch=" + startPoint.getPitch() + ",startPointYaw=" + startPoint.getYaw()
-					+ " WHERE name='" + name + "';");
+			mysql.update("UPDATE " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS SET world='"
+					+ world.getName() + "',startPointX=" + startPoint.getX() + ",startPointY=" + startPoint.getY()
+					+ ",startPointZ=" + startPoint.getZ() + ",startPointPitch=" + startPoint.getPitch()
+					+ ",startPointYaw=" + startPoint.getYaw() + " WHERE name='" + name + "';");
 		} else {
 			arenaData.getData().set("arenas." + name + ".world", world.getName());
 			arenaData.getData().set("arenas." + name + ".startPoint.X", startPoint.getX());
@@ -370,8 +373,8 @@ public class Arena {
 		}
 
 		if (mysql.hasConnection()) {
-			mysql.update("UPDATE " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS SET minAmountPlayer=" + amount + " WHERE name='"
-					+ name + "';");
+			mysql.update("UPDATE " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS SET minAmountPlayer="
+					+ amount + " WHERE name='" + name + "';");
 		} else {
 			arenaData.getData().set("arenas." + name + ".minAmountPlayer", amount);
 			arenaData.saveArenaData();
@@ -402,8 +405,8 @@ public class Arena {
 		}
 
 		if (mysql.hasConnection()) {
-			mysql.update("UPDATE " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS SET maxAmountPlayer=" + amount + " WHERE name='"
-					+ name + "';");
+			mysql.update("UPDATE " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS SET maxAmountPlayer="
+					+ amount + " WHERE name='" + name + "';");
 		} else {
 			arenaData.getData().set("arenas." + name + ".maxAmountPlayer", amount);
 			arenaData.saveArenaData();
@@ -536,8 +539,8 @@ public class Arena {
 
 		User user = null;
 		if (teleport || gameState != GameState.ACTIVE) {
-			user = new User(CubeRunner.get().getConfiguration(), CubeRunner.get().getCRPlayer(player), this, gameState == GameState.ACTIVE,
-					teleport);
+			user = new User(CubeRunner.get().getConfiguration(), CubeRunner.get().getCRPlayer(player), this,
+					gameState == GameState.ACTIVE, teleport);
 			users.add(user);
 			CRSign.updateSigns(this);
 		}
@@ -565,7 +568,8 @@ public class Arena {
 			localAlt.sendMsg(u, localAlt.get(Messages.JOIN_OTHERS).replace("%player%", player.getDisplayName()));
 		}
 
-		if (gameState == GameState.READY && CubeRunner.get().getConfiguration().autostart && getAmountOfPlayerInGame() >= minAmountPlayer)
+		if (gameState == GameState.READY && CubeRunner.get().getConfiguration().autostart
+				&& getAmountOfPlayerInGame() >= minAmountPlayer)
 			initiateGame(null);
 	}
 
@@ -817,7 +821,7 @@ public class Arena {
 				for (User user : arena.users) {
 					if (user.isEliminated())
 						continue;
-					
+
 					if (user.getLastTreeSecondsDistance() < 1 && user.getScore() >= 2)
 						arena.eliminateUser(user, LeavingReason.HIDING);
 
@@ -832,10 +836,10 @@ public class Arena {
 								player.getLocation().getZ());
 
 					NumberFormat formater = new DecimalFormat("#.#####");
-					double xOffset = Double
-							.parseDouble(formater.format(l.getX() > 0 ? l.getX() % 1 : 1 + (l.getX() % 1)));
-					double zOffset = Double
-							.parseDouble(formater.format(l.getZ() > 0 ? l.getZ() % 1 : 1 + (l.getZ() % 1)));
+					double xOffset = Double.parseDouble(
+							formater.format(l.getX() > 0 ? l.getX() % 1 : 1 + (l.getX() % 1)).replace(",", "."));
+					double zOffset = Double.parseDouble(
+							formater.format(l.getZ() > 0 ? l.getZ() % 1 : 1 + (l.getZ() % 1)).replace(",", "."));
 
 					if (xOffset <= 0.7 && xOffset >= 0.3)
 						l.setX(Math.floor(l.getX()) + 0.5D);
@@ -1075,8 +1079,9 @@ public class Arena {
 			}
 
 			if (mysql.hasConnection()) {
-				mysql.update("UPDATE " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS SET highestScore='" + user.getScore()
-						+ "', highestPlayer='" + user.getPlayer().getName() + "' WHERE name='" + name + "';");
+				mysql.update("UPDATE " + CubeRunner.get().getConfiguration().tablePrefix + "ARENAS SET highestScore='"
+						+ user.getScore() + "', highestPlayer='" + user.getPlayer().getName() + "' WHERE name='" + name
+						+ "';");
 			} else {
 				arenaData.getData().set("arenas." + name + ".highestScore.score", highestScore);
 				arenaData.getData().set("arenas." + name + ".highestScore.player", user.getPlayer().getName());
