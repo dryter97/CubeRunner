@@ -59,7 +59,7 @@ public final class Updater implements Listener {
 	}
 	
 	private boolean getInfoFromServer() throws IOException {
-		URL oracle = new URL(spigotPage);
+		URL oracle = new URL(spigotPage + "history");
 		URLConnection urlConn = oracle.openConnection();
 		urlConn.addRequestProperty("User-Agent", "Mozilla/4.76");
 		InputStream is = urlConn.getInputStream();

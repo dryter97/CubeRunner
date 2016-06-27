@@ -52,8 +52,10 @@ public class CubeRunner extends JavaPlugin {
 		aboveOneNine = NMS_VERSION.startsWith("v1_9") || NMS_VERSION.startsWith("v1_1") || NMS_VERSION.startsWith("v2");
 
 		config = new Configuration(this);
-		if (config.lookForUpdates)
+		if (config.lookForUpdates) {
 			updater = new Updater(this);
+			getServer().getPluginManager().registerEvents(updater, this);
+		}
 
 		if (!initialiseEconomy())
 			return;
@@ -181,7 +183,6 @@ public class CubeRunner extends JavaPlugin {
 	private void enableListeners() {
 		PluginManager pm = getServer().getPluginManager();
 
-		pm.registerEvents(updater, this);
 		pm.registerEvents(playerData, this);
 		pm.registerEvents(new ListenerPlayerDamage(), this);
 		pm.registerEvents(new ListenerPlayerTeleport(), this);
