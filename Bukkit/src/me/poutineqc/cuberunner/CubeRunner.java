@@ -34,7 +34,7 @@ public class CubeRunner extends JavaPlugin {
 
 	private static CubeRunner plugin;
 	public static final String name = "CubeRunner";
-	
+
 	private Updater updater;
 	private Configuration config;
 	private MySQL mysql = new MySQL();
@@ -44,20 +44,20 @@ public class CubeRunner extends JavaPlugin {
 
 	private Economy economy;
 	public static String NMS_VERSION;
-    public static boolean oneNine;
+	public static boolean aboveOneNine;
 
 	public void onEnable() {
 		plugin = this;
-        NMS_VERSION = getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3];
-        oneNine = NMS_VERSION.startsWith("v1_9");
+		NMS_VERSION = getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3];
+		aboveOneNine = NMS_VERSION.startsWith("v1_9") || NMS_VERSION.startsWith("v1_1") || NMS_VERSION.startsWith("v2");
 
 		config = new Configuration(this);
 		if (config.lookForUpdates)
 			updater = new Updater(this);
-			
+
 		if (!initialiseEconomy())
 			return;
-		
+
 		loadLanguages();
 		connectMySQL();
 		arenaData = new ArenaData(this);
@@ -69,7 +69,7 @@ public class CubeRunner extends JavaPlugin {
 
 		getCommand("cuberunner").setExecutor(new ListenerCommand());
 		getCommand("cuberunner").setTabCompleter(new ListenerTabComplete());
-		
+
 		enableListeners();
 
 		try {
@@ -79,7 +79,7 @@ public class CubeRunner extends JavaPlugin {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 			@Override
 			public void run() {
@@ -97,7 +97,7 @@ public class CubeRunner extends JavaPlugin {
 
 		if (config.lookForUpdates)
 			updater.stop();
-		
+
 		if (mysql.hasConnection())
 			mysql.close();
 		else
@@ -105,33 +105,34 @@ public class CubeRunner extends JavaPlugin {
 
 		logger.info(pdfFile.getName() + " has been diabled");
 	}
-	
+
 	public void reload() {
 		updater.stop();
 		Language.clear();
-		
+
 		config.loadConfiguration(this);
 		if (config.lookForUpdates)
 			updater = new Updater(this);
-		
+
 		if (!initialiseEconomy())
 			return;
-		
+
 		loadLanguages();
-		
+
 		playerData.clear();
 		playerData.loadViews();
 		playerData.loadPlayers(this);
 		achievementManager = new AchievementManager(this);
 		CRSign.setVariables(this);
-		
+
 		Arena.loadExistingArenas();
 		CRSign.loadAllSigns();
 	}
 
 	public void connectMySQL() {
 		if (config.mysql) {
-			mysql = new MySQL(this, config.host, config.port, config.database, config.user, config.password, config.tablePrefix);
+			mysql = new MySQL(this, config.host, config.port, config.database, config.user, config.password,
+					config.tablePrefix);
 		} else {
 			mysql = new MySQL(this);
 		}
@@ -180,6 +181,7 @@ public class CubeRunner extends JavaPlugin {
 	private void enableListeners() {
 		PluginManager pm = getServer().getPluginManager();
 
+		pm.registerEvents(updater, this);
 		pm.registerEvents(playerData, this);
 		pm.registerEvents(new ListenerPlayerDamage(), this);
 		pm.registerEvents(new ListenerPlayerTeleport(), this);
@@ -191,8 +193,8 @@ public class CubeRunner extends JavaPlugin {
 		pm.registerEvents(new ListenerSignBreak(), this);
 		pm.registerEvents(new ListenerInventoryClick(), this);
 		pm.registerEvents(new ListenerEntityChangeBlock(), this);
-		
-		if (oneNine)
+
+		if (aboveOneNine)
 			pm.registerEvents(new ListenerEntityGlide(), this);
 	}
 
@@ -211,7 +213,7 @@ public class CubeRunner extends JavaPlugin {
 	public PlayerData getPlayerData() {
 		return playerData;
 	}
-	
+
 	public static CubeRunner get() {
 		return plugin;
 	}

@@ -676,7 +676,7 @@ public class Arena {
 						for (User user : arena.users) {
 							if (cooldownTimer % 20.0 == 0) {
 
-								Sound sound = CubeRunner.oneNine ? Sound.valueOf("UI_BUTTON_CLICK")
+								Sound sound = CubeRunner.aboveOneNine ? Sound.valueOf("UI_BUTTON_CLICK")
 										: Sound.valueOf("CLICK");
 
 								user.getPlayer().playSound(user.getPlayer().getLocation(), sound, 1, 1);
