@@ -1,9 +1,13 @@
 package me.poutineqc.cuberunner;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
@@ -18,7 +22,6 @@ import me.poutineqc.cuberunner.utils.Permissions;
 public final class Updater implements Listener {
 
 	private static final String spigotPage = "https://www.spigotmc.org/resources/cuberunner.19715/";
-	private static final String versionPage = "http://www.poutineqc.ca/pluginVersion.txt";
 
 	private final CubeRunner plugin;
 	private final int id;
@@ -46,30 +49,35 @@ public final class Updater implements Listener {
 	}
 
 	private void checkForLastVersion(CubeRunner plugin) {
-		boolean next = false;
-		
 		try {
 			lastVersion = getInfoFromServer();
 		} catch (IOException e) {
 			plugin.getLogger().warning("Could not find the latest version available.");
+			stop();
+			return;
 		}
-
-		lastVersion = (next) ? latestVersion.equalsIgnoreCase(plugin.getDescription().getVersion()) : true;
 	}
 	
 	private boolean getInfoFromServer() throws IOException {
-		boolean next = false;
+		URL oracle = new URL(spigotPage);
+		URLConnection urlConn = oracle.openConnection();
+		urlConn.addRequestProperty("User-Agent", "Mozilla/4.76");
+		InputStream is = urlConn.getInputStream();
+		BufferedInputStream bis = new BufferedInputStream(is, 4 * 1024);
+		BufferedReader in = new BufferedReader(new InputStreamReader(bis, StandardCharsets.UTF_8));
 		
-		URL url = new URL(versionPage);
-		BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-
-		while ((latestVersion = in.readLine()) != null && !next) {
-			if (latestVersion.equalsIgnoreCase(CubeRunner.name))
-				next = true;
-		}
+		latestVersion = null;
+		String inputLine;
+		while ((inputLine = in.readLine()) != null && latestVersion == null)
+			if (inputLine.matches("^.*?([1-9][0-9]?\\.[1-9][0-9]?.*)$") && inputLine.contains(plugin.getName()))
+				latestVersion = inputLine.replaceAll(" ", "").replace(plugin.getName(), "").replaceAll("<[^>]*>", "");
 
 		in.close();
-		return next;
+		if (latestVersion == null) {
+			throw new IOException("Could not find the version on the page.");
+		}
+		
+		return latestVersion.equalsIgnoreCase(plugin.getDescription().getVersion());
 	}
 
 	private void notifyConsole(CubeRunner plugin) {

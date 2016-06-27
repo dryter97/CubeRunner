@@ -89,7 +89,6 @@ public class MySQL {
 		try {
 			connection = DriverManager.getConnection(
 					"jdbc:mysql://" + host + ":" + port + "/" + database + "?autoReconnect=true", user, password);
-			plugin.getLogger().info("[MySQL] The connection to MySQL is made!");
 		} catch (SQLException e) {
 			plugin.getLogger().info("[MySQL] The connection to MySQL couldn't be made! reason: " + e.getMessage());
 		}
@@ -99,7 +98,6 @@ public class MySQL {
 		try {
 			if (connection != null) {
 				connection.close();
-				plugin.getLogger().info("[MySQL] The connection to MySQL is ended successfully!");
 			}
 		} catch (SQLException e) {
 			plugin.getLogger().info("[MySQL] The connection couldn't be closed! reason: " + e.getMessage());

@@ -12,7 +12,7 @@ import me.poutineqc.cuberunner.Language;
 import me.poutineqc.cuberunner.Language.Messages;
 import me.poutineqc.cuberunner.commands.InventoryItem;
 import me.poutineqc.cuberunner.game.Arena;
-import me.poutineqc.cuberunner.game.Arena.GameState;
+import me.poutineqc.cuberunner.game.GameState;
 import me.poutineqc.cuberunner.utils.ItemStackManager;
 
 public class CRInventoryColor extends CRInventory {
