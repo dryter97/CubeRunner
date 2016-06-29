@@ -70,7 +70,7 @@ public class OriginalPlayerStats {
 		player.setLevel(0);
 		player.setExp(0);
 		player.setGameMode(GameMode.ADVENTURE);
-		player.setHealth(20);
+		player.setHealth(player.getMaxHealth());
 		player.setFoodLevel(20);
 		player.setSaturation(20);
 		for (PotionEffect effect : player.getActivePotionEffects())
