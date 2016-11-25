@@ -1,3 +1,4 @@
 *.classpath
 Bukkit/.project
 Bukkit/.gitignore
+/bin/
