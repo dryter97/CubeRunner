@@ -42,7 +42,7 @@ public class ListenerCommand implements CommandExecutor {
 			local.sendMsg(player, local.get(Messages.ERROR_COMMAND).replace("%cmd%", cmdValue));
 			return true;
 		}
-		
+
 		if (!Permissions.hasPermission(crCommand.getPermission(), player, true))
 			return true;
 
